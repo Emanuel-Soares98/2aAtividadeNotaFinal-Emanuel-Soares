@@ -37,6 +37,7 @@ $books = $db->query("SELECT * FROM books ORDER BY id")->fetchAll(PDO::FETCH_ASSO
     <div class="container">
 
         <h1>Sistema de Gerenciamento da Livraria</h1>
+
         <h2>Adicionar Livro</h2>
         <form id="addForm" action="add_book.php" method="POST">
             ID: <input type="number" name="id" id="id">
@@ -73,15 +74,24 @@ $books = $db->query("SELECT * FROM books ORDER BY id")->fetchAll(PDO::FETCH_ASSO
             <?php endforeach; ?>
         </table>
     </div>
+
     <script>
         document.getElementById("addForm").addEventListener("submit", function(e) {
-            if (!id.value || !title.value || !author.value || !year.value) {
+
+            const id = document.getElementById("id"); 
+            const title = document.getElementById("title"); 
+            const author = document.getElementById("author"); 
+            const year = document.getElementById("year"); 
+
+            if (!id.value || !title.value || !author.value || !year.value) { 
                 alert("Preencha todos os campos antes de salvar!");
                 e.preventDefault();
             }
         });
 
         document.getElementById("deleteForm").addEventListener("submit", function(e) {
+            const delete_id = document.getElementById("delete_id");
+
             if (!delete_id.value) {
                 alert("Digite o ID que deseja excluir.");
                 e.preventDefault();
