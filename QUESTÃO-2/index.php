@@ -18,7 +18,7 @@ function formatarData($data) {
         li { background: #fff; padding: 10px; margin-bottom: 8px;
              border-radius: 5px; display: flex; justify-content: space-between; }
         .concluida { text-decoration: line-through; color: gray; }
-        .descricao-tarefa { font-weight: bold; } /* agora o negrito vem do CSS */
+        .descricao-tarefa { font-weight: bold; }
     </style>
     <script>
         function confirmarExclusao() {
