@@ -20,7 +20,6 @@ function formatarData($data) {
         .concluida { text-decoration: line-through; color: gray; }
         .descricao-tarefa { font-weight: bold; } /* agora o negrito vem do CSS */
     </style>
-
     <script>
         function confirmarExclusao() {
             return confirm("Você realmente quer excluir esta tarefa?");
