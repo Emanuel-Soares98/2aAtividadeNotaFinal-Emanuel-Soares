@@ -1,21 +1,20 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$dbname = 'tarefas_db';
 
-$conexao = new mysqli($host, $user, $pass, $dbname);
+try {
+    $db = new PDO("sqlite:".__DIR__."/tarefas.db");
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if ($conexao->connect_error) {
-    die("Erro ao conectar ao banco de dados: " . $conexao->connect_error);
+    $db->query("
+        CREATE TABLE IF NOT EXISTS tarefas (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            descricao TEXT NOT NULL,
+            data_vencimento TEXT,
+            concluida INTEGER DEFAULT 0
+        )
+    ");
+
+} catch (Exception $e) {
+    die("Erro ao conectar ao banco: " . $e->getMessage());
 }
 
-$sql = "
-CREATE TABLE IF NOT EXISTS tarefas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    descricao VARCHAR(255) NOT NULL,
-    data_vencimento DATE,
-    concluida TINYINT(1) DEFAULT 0
-)";
-$conexao->query($sql);
 ?>
