@@ -1,11 +1,9 @@
 <?php
 include 'database.php';
 
-$idTarefa = $_GET['id'];
+$id = $_GET['id'] ?? 0;
 
-$stmt = $conexao->prepare("DELETE FROM tarefas WHERE id = ?");
-$stmt->bind_param("i", $idTarefa);
-$stmt->execute();
+$db->query("DELETE FROM tarefas WHERE id = $id");
 
 header("Location: index.php");
 exit;
