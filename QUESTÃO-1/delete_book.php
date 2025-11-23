@@ -1,10 +1,9 @@
 <?php
 include 'database.php';
 
-$id = $_POST['id'];
+$idExcluir = $_POST['id'];
 
-$stmt = $db->prepare("DELETE FROM books WHERE id = ?");
-$stmt->execute([$id]);
+$db->query("DELETE FROM books WHERE id = $idExcluir");
 
 header("Location: index.php");
 exit();
